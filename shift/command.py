@@ -37,9 +37,9 @@ class ShiftCommand(BaseCommand):
         # logic here
         if new_column_name != "":
             df[new_column_name] = df[column_to_transform].shift(periods=period, fill_value=fill_value)
-            self.log_progress('Shift command is completed.', stage=1, total_stages=1)
-            return df
+
         else:
-            new_df = pd.DataFrame(df[column_to_transform].shift(periods=period, fill_value=fill_value))
-            self.log_progress('Shift command is completed.', stage=1, total_stages=1)
-            return new_df
+            df = pd.DataFrame(df[column_to_transform].shift(periods=period, fill_value=fill_value))
+
+        self.log_progress('Shift command is completed.', stage=1, total_stages=1)
+        return df
